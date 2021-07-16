@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn_1">按钮1</button>
+    <button id="btn_2">按钮2</button>
+    <button onclick="demo()">按钮3</button>
+
+    <script>
+        document.getElementById('btn_1').addEventListener('click', function(){
+            console.log('按钮1被点击了')
+        })
+
+        document.getElementById('btn_2').onclick = function(){
+            console.log('按钮2被点击了')
+        }
+
+        function demo(){
+            console.log('按钮3被点击了')
+        }
+    </script>
+</body>
+</html>
