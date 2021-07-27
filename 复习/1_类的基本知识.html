@@ -64,9 +64,13 @@
 
             //类中可以直接写赋值语句，如下代码的含义是：给Car的实例对象添加一个属性，名为a，值为1
             wheel = 4
+
+            static something = 123 //类似在 Car 上添加一个属性 ，不是添加到原型链上，就不会实例化
         }
+
         const c1 = new Car('奔驰', 199)
         console.log(c1)
+        console.log(Car.something)
     </script>
 </body>
 </html>
