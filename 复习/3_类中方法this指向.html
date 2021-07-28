@@ -21,14 +21,22 @@
         const p1 = new Person('tom', 18)
         p1.speak()//通过实例调用speak方法
 
-        const x = p1.study
+        const x = p1.speak
         x()//类中定义的方法在局部开启了严格模式
 
+        
         function demo(){
             'use strict'//undefined
-            console.log(this)
+            console.log('demo', this)
         }
         demo()
+
+        //箭头函数this指向定义的位置
+        const demo2 = () => {
+            'use strict'
+            console.log('demo2', this)
+        }
+        demo2()
     </script>
 </body>
 </html>
