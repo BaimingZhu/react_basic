@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>hello_react</title>
+</head>
+<body>
+
+    <!-- 准备好一个容器 -->
+    <div id="test1"></div>
+
+    <!-- 引入react核心库-->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom,用于支持react操作dom -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <!-- 引入babel 用于将jsx转为js -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+
+    <script type="text/babel">
+       //创建组件
+       class Demo extends React.Component{
+           //展示左侧输入框的数据
+            show_data = () => {
+                const {input1} = this
+                alert(input1.value)
+            }
+
+            show_data2 = () => {
+                const {input2} = this
+                alert(input2.value)
+            }
+
+            render(){
+                return (
+                    <div>
+                        <input ref={currentNode => this.input1 = currentNode} type="text" placeholder='点击按钮提示数据'/> &nbsp;
+                        <button onClick={this.show_data}>点我提示左侧的数据</button>&nbsp;
+                        <input  ref={currentNode => this.input2 = currentNode} onBlur={this.show_data2} type="text" placeholder='失去焦点展示数据'/>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<Demo />, document.getElementById('test1'))
+    </script>
+    
+</body>
+</html>
