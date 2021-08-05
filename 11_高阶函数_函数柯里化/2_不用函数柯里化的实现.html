@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>1_高阶函数_函数柯里化</title>
+</head>
+
+<body>
+
+    <!-- 准备好一个容器 -->
+    <div id="test"></div>
+
+    <!-- 引入react核心库-->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom,用于支持react操作dom -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <!-- 引入babel 用于将jsx转为js -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+
+    <script type="text/babel">
+        //#region
+            /* 
+                高阶函数：如果一个函数符合下面2个规范中的任何一个，那该函数就是高阶函数
+                    1.若A函数，接收的参数是一个函数，那么A就可以称之为高阶函数。
+                    2.若A函数，调用的返回值依然是一个函数，那么A就可以称之为函数。
+                    常见的高阶函数有：Promise、setTimeout、arr.map() 等等
+
+                函数的柯里化：通过函数调用继续返回函数的方式，实现多次接收参数最后统一处理的函数编码形式。
+            */
+        //#endregion
+
+        //创建组件
+        class Login extends React.Component {
+            state = {
+                username : '',
+                password : ''
+            }
+
+            saveFormData = (dataType, event) => {
+                    this.setState({[dataType] : event.target.value})
+                
+            }
+            
+            handleSubmit = (e) => {
+                e.preventDefault()
+                const {username, password} = this.state
+                alert(`你输入的用户名:${username}, 你输入的密码是${password}`)//受控组件
+            }
+
+            render() {
+                return (
+                    <form onSubmit={this.handleSubmit}>
+                        用户名：<input onChange={(e) => this.saveFormData('username', e)} type='text' name="username" />
+                        密  码：<input onChange={(e) => this.saveFormData('password', e)} type='text' name="password" />
+                        <button type="submit">提交</button>
+                    </form>
+                )
+            }
+        }
+
+        ReactDOM.render(<Login />, document.getElementById('test'))
+    </script>
+
+
+</body>
+
+</html>
