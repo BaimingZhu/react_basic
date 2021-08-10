@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>2_react生命周期(旧)</title>
+    <title>3_react生命周期(新)</title>
 </head>
 <body>
 
@@ -11,30 +11,13 @@
     <div id="test"></div>
 
     <!-- 引入react核心库-->
-    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/17.0.2/react.development.js"></script>
     <!-- 引入react-dom,用于支持react操作dom -->
-    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/17.0.2/react-dom.development.js"></script>
     <!-- 引入babel 用于将jsx转为js -->
     <script type="text/javascript" src="../js/babel.min.js"></script>
 
     <script type="text/babel">
-        /* 
-        生命周期的三个阶段（旧）
-        1. 初始化阶段: 由ReactDOM.render()触发---初次渲染
-            1.constructor()
-            2.componentWillMount()
-            3.render()
-            4.componentDidMount() =====> 常用
-                    一般在这个钩子中做一些初始化的事，例如：开启定时器、发送网络请求、订阅消息
-        2. 更新阶段: 由组件内部this.setSate()或父组件重新render触发
-            1.shouldComponentUpdate()
-            2.componentWillUpdate()
-            3.render()  =====> 必须使用的一个
-            4.componentDidUpdate()
-        3. 卸载组件: 由ReactDOM.unmountComponentAtNode()触发
-            1.componentWillUnmount()  =====> 常用
-                    一般在这个钩子中做一些收尾的事，例如关闭定时器、取消订阅消息
- */
         //创建组件
         class Count extends React.Component{
             
@@ -47,7 +30,7 @@
 
 
             //组件将要挂载的钩子
-            componentWillMount(){
+            UNSAFE_componentWillMount(){
                 console.log('Count---ComponentWillMount')
             }
 
@@ -58,7 +41,7 @@
             }
 
             //组件将要被更新
-            componentWillUpdate(){
+            UNSAFE_componentWillUpdate(){
                 console.log('Count---componentWillUpdate')
             }
 
@@ -128,7 +111,7 @@
         //子组件B
         class B extends React.Component{
             //组件将要接受新的钩子
-            componentWillReceiveProps(props){
+            UNSAFE_componentWillReceiveProps(props){
                 console.log('B---componentWillReceiveProps', props)
             }
             render(){
@@ -139,7 +122,7 @@
             }
         }
 
-        ReactDOM.render(<A/>, document.getElementById('test'))
+        ReactDOM.render(<Count/>, document.getElementById('test'))
     </script>
     
 </body>
