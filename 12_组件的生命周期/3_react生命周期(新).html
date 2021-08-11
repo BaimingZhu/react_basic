@@ -29,20 +29,15 @@
             }
 
 
-            //组件将要挂载的钩子
-            UNSAFE_componentWillMount(){
-                console.log('Count---ComponentWillMount')
-            }
-
             //组件是否应该被更新
             shouldComponentUpdate(){
                 console.log('Count---shouldComponentUpdate')
                 return true
             }
 
-            //组件将要被更新
-            UNSAFE_componentWillUpdate(){
-                console.log('Count---componentWillUpdate')
+            static getDerivedStateFromProps = function(props, state){
+                console.log('@', 'getDerivedStateFromProps', props, state)
+                return props
             }
 
             //组件将要卸载的钩子
@@ -85,39 +80,6 @@
                         <button onClick={this.death}>卸载</button>
                         <button onClick={this.force}>不改变任何状态中的数据，强制更新</button>
                     </div>
-                )
-            }
-        }
-
-        //父组件A
-        class A extends React.Component{
-            
-            state = { carName : '奔驰'}
-
-            changeCar = () => {
-                this.setState({ carName : '特斯拉'})
-            }
-            render(){
-                return (
-                    <div>
-                        <div>A</div>
-                        <button onClick={this.changeCar}>换车</button>
-                        <B carName={this.state.carName}/>
-                   </div>
-                )
-            }
-        }
-
-        //子组件B
-        class B extends React.Component{
-            //组件将要接受新的钩子
-            UNSAFE_componentWillReceiveProps(props){
-                console.log('B---componentWillReceiveProps', props)
-            }
-            render(){
-                console.log('B---render')
-                return(
-                   <div>我是B组件接到了{this.props.carName}</div>
                 )
             }
         }
