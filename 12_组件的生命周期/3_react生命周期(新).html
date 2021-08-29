@@ -35,9 +35,16 @@
                 return true
             }
 
+
+            //若state的值在任何时候都取决于props，那么可以使用getDerivedStateFromProps
             static getDerivedStateFromProps = function(props, state){
                 console.log('@', 'getDerivedStateFromProps', props, state)
                 return props
+            }
+
+            getSnapshotBeforeUpdate(){
+                console.log('getSnapshotBeforeUpdate')
+                return null
             }
 
             //组件将要卸载的钩子
@@ -51,8 +58,8 @@
             }
 
             //组件更新完毕的钩子
-            componentDidUpdate(){
-                console.log('Count---componentDidUpdate')
+            componentDidUpdate(preProps, preState, snapshotValue){
+                console.log('Count---componentDidUpdate', preProps, preState, snapshotValue)
             }
 
             //加一按钮回调
