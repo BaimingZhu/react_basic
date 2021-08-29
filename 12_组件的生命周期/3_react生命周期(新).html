@@ -6,7 +6,22 @@
     <title>3_react生命周期(新)</title>
 </head>
 <body>
-
+    <!-- 
+        1. 初始化阶段: 由ReactDOM.render()触发---初次渲染
+            1.constructor()
+            2.getDerivedStateFromProps 
+            3.render()
+            4.componentDidMount()
+        2. 更新阶段: 由组件内部this.setSate()或父组件重新render触发
+            1.getDerivedStateFromProps
+            2.shouldComponentUpdate()
+            3.render()
+            4.getSnapshotBeforeUpdate
+            5.componentDidUpdate()
+        3. 卸载组件: 由ReactDOM.unmountComponentAtNode()触发
+            1.componentWillUnmount() 
+    -->
+    
     <!-- 准备好一个容器 -->
     <div id="test"></div>
 
