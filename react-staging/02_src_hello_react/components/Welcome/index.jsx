@@ -4,7 +4,7 @@ import './index.css'
 export default class Welcome extends Component{
     render(){
         return (
-            <h2 className="demo"> Welcome</h2>
+            <h2 className="title"> Welcome</h2>
         )
     }
 }
