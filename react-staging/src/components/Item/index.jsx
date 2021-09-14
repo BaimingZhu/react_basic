@@ -22,16 +22,24 @@ export default class Item extends Component {
         }
     } 
 
+    //标识鼠标移入移出的回调
+    handleDelete = (id) => {
+        // console.log('通知删除id', id)
+        if(window.confirm('确认删除吗？')){
+            this.props.deleteTodo(id)
+        }
+    } 
+
     render() {
         const {name, id, done} = this.props
         const {mouse} = this.state
         return (
             <li style={{backgroundColor: mouse ? "#ddd" : 'white'}} onMouseEnter={this.handelMouse(true)} onMouseLeave={this.handelMouse(false)}>
             <label>
-                <input type="checkbox" defaultChecked={done} onChange={this.handelCheck(id)}/>
+                <input type="checkbox" checked={done} onChange={this.handelCheck(id)}/>
                 <span>{name}</span>
             </label>
-            <button className="btn btn-danger" style={{display: mouse ? 'block' : 'none'}}>删除</button>
+            <button onClick={() => {this.handleDelete(id)}} className="btn btn-danger" style={{display: mouse ? 'block' : 'none'}}>删除</button>
         </li>
         )
     }
