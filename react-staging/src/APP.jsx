@@ -4,7 +4,7 @@ import axios from 'axios'
 export default class APP extends Component {
 
     getStudentData = () => {
-        axios.get('????').then(
+        axios.get('http://localhost:3000/students').then(
             response=> {
                 console.log('成功了', response.data)
             },
