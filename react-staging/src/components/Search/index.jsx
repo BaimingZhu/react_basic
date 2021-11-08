@@ -13,6 +13,7 @@ export default class Search extends Component {
         axios.get(`https://api.github.com/search/users?q=${keyword}`).then(
             response => {
                 console.log('成功了', response.data)
+                this.props.saveUsers(response.data.items)
             }, error => {
                 console.log('失败了', error)
             }
