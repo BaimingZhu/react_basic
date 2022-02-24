@@ -13,7 +13,7 @@ export default class List extends Component {
 
 	componentDidMount(){
 		var that = this
-		PubSub.subscribe('changeState', function(msg, data){
+		this.token = PubSub.subscribe('changeState', function(msg, data){
 			console.log('------->', msg, data)
 			that.setState(data)
 		})
