@@ -9,13 +9,19 @@ export default class Search extends Component {
         const {keyWordElement : {value: keyword} } = this
         console.log(keyword);
 
+        //发送请求前通知App更新状态
+        this.props.updateAppState({isFirst:false, isLoading:true})
+
         //发送网络请求
         axios.get(`https://api.github.com/search/users?q=${keyword}`).then(
             response => {
                 console.log('成功了', response.data)
-                this.props.saveUsers(response.data.items)
+                //请求成功后通知App更新状态
+                this.props.updateAppState({isLoading:false, users: response.data.items, err:''})
             }, error => {
                 console.log('失败了', error)
+                //请求失败后通知App更新状态
+                this.props.updateAppState({isLoading:false, err:error.message})
             }
         )
     }
