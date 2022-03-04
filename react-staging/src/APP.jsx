@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import Search from "./components/Search";
-import List from "./components/List";
 
 export default class APP extends Component {
 
@@ -12,8 +10,7 @@ export default class APP extends Component {
 		// const {state} = this.state
 		return (
 			<div className="container">
-				<Search></Search>
-				<List></List>
+				App.....
 			</div>
 		);
 	}
