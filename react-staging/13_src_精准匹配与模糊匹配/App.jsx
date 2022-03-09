@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Route, Switch, Redirect} from 'react-router-dom'
+import {Route, Switch} from 'react-router-dom'
 import Home from './pages/Home'//路由组件
 import About from './pages/About'
 import Header from './components/Header'//一般组件
@@ -23,7 +23,7 @@ export default class App extends Component {
 							<a className="list-group-item active" href="./home.html">Home</a> */}
 
 							<MyNavLink to="/about">About</MyNavLink>
-							<MyNavLink to="/home">Home</MyNavLink>
+							<MyNavLink to="/home/jakosdlf">Home</MyNavLink>
 						</div>
 					</div>
 					<div className="col-xs-6">
@@ -31,9 +31,8 @@ export default class App extends Component {
 							<div className="panel-body">
 								{/* 注册路由 */}
 								<Switch>
-									<Route path="/about" component={About}/>
-									<Route path="/home" component={Home}/>
-									<Redirect to="/about"></Redirect>
+									<Route exact={true} path="/about" component={About}/>
+									<Route exact={true} path="/home" component={Home}/>
 								</Switch>
 							</div>
 						</div>
