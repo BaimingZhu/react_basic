@@ -25,8 +25,8 @@ export default class App extends Component {
 							{/* 在React中靠路由链接实现切换组件--编写路由链接 */}
 							{/* <NavLink activeClassName="zhubaiming" className="list-group-item" to="/about">About</NavLink>
 							<NavLink activeClassName="zhubaiming" className="list-group-item" to="/home">Home</NavLink> */}
-							<MyNavLink to="/about">About</MyNavLink>
-							<MyNavLink to="/home">Home</MyNavLink>
+							<MyNavLink to="/zhubaiming/about">About</MyNavLink>
+							<MyNavLink to="/zhubaiming/home">Home</MyNavLink>
 						</div>
 					</div>
 					<div className="col-xs-6">
@@ -34,9 +34,8 @@ export default class App extends Component {
 							<div className="panel-body">
 								{/* 注册路由 */}
 								<Switch>
-									<Route path="/about" component={About}/>
-									<Route path="/home" component={Home}/>
-									<Route path="/home" component={About}/>
+									<Route path="/zhubaiming/about" component={About}/>
+									<Route path="/zhubaiming/home" component={Home}/>
 								</Switch>
 							</div>
 						</div>
