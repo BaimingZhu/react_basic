@@ -9,8 +9,8 @@ const DetailData = [
 export default class Detail extends Component {
     render() {
         // console.log(this.props)
-        const {id, title} = this.props.location.state || {}
-        const findresult  = DetailData.find( v => v.id === id) || {}
+        const {id, title} = this.props.location.state
+        const findresult  = DetailData.find( v => v.id === id)
         return (
             <ul>
                 <li>ID:{id}</li>
