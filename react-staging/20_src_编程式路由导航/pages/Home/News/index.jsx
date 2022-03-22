@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 export default class index extends Component {
-  
+    
 	componentDidMount = () => {
     setTimeout(() => {
       console.log('------>componentDidMount', this)
