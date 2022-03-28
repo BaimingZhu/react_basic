@@ -1,45 +1,27 @@
-import React, { Component } from "react";
-import {Route, Switch, Redirect} from 'react-router-dom'
-import Home from './pages/Home'//路由组件
-import About from './pages/About'
-import Header from './components/Header'//一般组件
-import MyNavLink from './components/MyNavLink'
+import React, { Component } from 'react'
+import {Button, DatePicker, ConfigProvider} from 'antd'
+import {WechatOutlined} from '@ant-design/icons'
 
+// 由于 antd 组件的默认文案是英文，所以需要修改为中文
+import zhCN from 'antd/lib/locale/zh_CN';
+import moment from 'moment';
+import 'moment/locale/zh-cn';
+
+moment.locale('zh-cn');
+
+const {RangePicker} = DatePicker
 export default class App extends Component {
-	render() {
-		return (
-			<div>
-				<div className="row">
-					<div className="col-xs-offset-2 col-xs-8">
-						<Header a={1}/>
-					</div>
-				</div>
-				<div className="row">
-					<div className="col-xs-2 col-xs-offset-2">
-						<div className="list-group">
-
-							{/* 原生html中，靠<a>跳转不同的页面 */}
-							{/* <a className="list-group-item" href="./about.html">About</a>
-							<a className="list-group-item active" href="./home.html">Home</a> */}
-
-							<MyNavLink to="/about">About</MyNavLink>
-							<MyNavLink to="/home">Home</MyNavLink>
-						</div>
-					</div>
-					<div className="col-xs-6">
-						<div className="panel">
-							<div className="panel-body">
-								{/* 注册路由 */}
-								<Switch>
-									<Route path="/about" component={About}/>
-									<Route path="/home" component={Home}/>
-									<Redirect to="/about"></Redirect>
-								</Switch>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		)
-	}
+  render() {
+	return (
+	  <div>
+		  	<ConfigProvider locale={zhCN}>
+				App...
+				<Button type='primary'>Primary Button</Button>
+				<Button type='link'>Link Button</Button>
+				<WechatOutlined/>
+				<RangePicker></RangePicker>
+			</ConfigProvider>
+	  </div>
+	)
+  }
 }
