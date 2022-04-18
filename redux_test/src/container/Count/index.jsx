@@ -55,9 +55,9 @@ class Count extends Component {
 
 //使用connect()()创建并暴露一个Count的容器组件
 export default connect(
-	//映射UI组件的state
+	//映射UI组件的状态
 	state => ({count:state}),
-	//映射UI组件props
+	//映射UI组件方法
 	{
 		jia  : createIncrementAction,
 		jian : createDecrementAction,
