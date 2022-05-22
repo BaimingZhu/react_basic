@@ -1,5 +1,4 @@
 import React from 'react'
-
 //类式组件
 // export default class Count extends React.Component {
 
@@ -7,29 +6,58 @@ import React from 'react'
 //     addCount = () => {
 //         this.setState( state => ({count : state.count + 1}))
 //     }
+//     unMount = () => {
+//         window.root.unmount()
+//     }
+
+//     componentDidMount = () => {
+// 		this.timer = setInterval(()=>{
+// 			this.setState( state => ({count : state.count + 1}))
+// 		}, 1000)
+// 	}
+
+//     componentWillUnmount = () => {
+//         clearInterval(this.timer)
+//     }
 
 //     render() {
 //         return (
 //             <div>
 //                 <h1>当前求和为：{this.state.count}</h1>
 //                 <button onClick={this.addCount}>点我+1</button>
+//                 <button onClick={this.unMount}>卸载组件</button>
 //             </div>
 //         )
 //     }
 // }
 
 
-//函数式组件
+// 函数式组件
 function Count() {
-    console.log('Count...')
-    const [count, changeCount] = React.useState(0)
+    const [count, setCount] = React.useState(0)
     const addCount = () => {
-        changeCount(count + 1)
+        setCount(count + 1)
     }
+    
+    React.useEffect( () => {
+        let timer = setInterval(() => {
+            setCount(count + 1)
+        }, 1000)
+        return ()=>{
+			clearInterval(timer)
+		}
+    }, [count])
+
+    //卸载组件的回调
+	function unmount(){
+        window.root.unmount()
+	}
+
     return (
         <div>
             <h1>当前求和为：{count}</h1>
             <button onClick={addCount}>点我+1</button>
+            <button onClick={unmount}>卸载组件</button>
         </div>
     )
 }
