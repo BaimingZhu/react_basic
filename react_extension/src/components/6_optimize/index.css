@@ -1,0 +1,14 @@
+.A{
+    width: 500px;
+    padding: 8px;
+    background-color: skyblue;
+}
+.B,.C{
+    width: 100%;
+    padding: 8px;
+    background-color: darksalmon;
+}
+
+.C{
+    background-color:fuchsia;
+}
